@@ -1,8 +1,11 @@
 package ru.azee.parser.jpa.entity;
 
+
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -23,8 +26,10 @@ public class Point implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY) // Стратегия, кот Автоматом добавляет id
-	private String id;
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private long id;
+
+	private String code;
 
 	private double distance;
 
@@ -33,23 +38,31 @@ public class Point implements Serializable {
 	private double vangle;
 
 	//bi-directional many-to-one association to Anglepair
-	@OneToMany(mappedBy="point")
-	private List<Anglepair> anglepairs;
+	@OneToMany(mappedBy="point", cascade = CascadeType.PERSIST)
+	private List<Anglepair> anglepairs = new ArrayList<>();
 
-	//bi-directional many-to-one association to Object
+	//bi-directional many-to-one association to Instance
 	@ManyToOne
-	@JoinColumn(name="Id_object")
-	private Object object;
+	@JoinColumn(name="Id_instance")
+	private Instance instance;
 
 	public Point() {
 	}
 
-	public String getId() {
+	public long getId() {
 		return this.id;
 	}
 
-	public void setId(String id) {
+	public void setId(long id) {
 		this.id = id;
+	}
+
+	public String getCode() {
+		return this.code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
 	}
 
 	public double getDistance() {
@@ -98,17 +111,12 @@ public class Point implements Serializable {
 		return anglepair;
 	}
 
-	public Object getObject() {
-		return this.object;
+	public Instance getInstance() {
+		return this.instance;
 	}
 
-	public void setObject(Object object) {
-		this.object = object;
+	public void setInstance(Instance instance) {
+		this.instance = instance;
 	}
 
-	@Override
-	public String toString() {
-		return "Point [id=" + id + ", distance=" + distance + ", hangle=" + hangle + ", vangle=" + vangle
-				+ ", anglepairs=" + anglepairs + ", object.id=" + object.getId() + "]";
-	}
 }

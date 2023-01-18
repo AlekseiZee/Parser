@@ -1,14 +1,14 @@
 package ru.azee.parser.jpa.entity;
 
+
 import java.io.Serializable;
-import java.util.List;
+import java.math.BigInteger;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.NamedQuery;
-import jakarta.persistence.OneToMany;
 
 
 /**
@@ -24,9 +24,11 @@ public class Object implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
 
-	//bi-directional many-to-one association to Point
-	@OneToMany(mappedBy="object")
-	private List<Point> points;
+	private String adresse;
+
+	private BigInteger number;
+
+	private String operator;
 
 	public Object() {
 	}
@@ -39,30 +41,28 @@ public class Object implements Serializable {
 		this.id = id;
 	}
 
-	public List<Point> getPoints() {
-		return this.points;
+	public String getAdresse() {
+		return this.adresse;
 	}
 
-	public void setPoints(List<Point> points) {
-		this.points = points;
+	public void setAdresse(String adresse) {
+		this.adresse = adresse;
 	}
 
-	public Point addPoint(Point point) {
-		getPoints().add(point);
-		point.setObject(this);
-
-		return point;
+	public BigInteger getNumber() {
+		return this.number;
 	}
 
-	public Point removePoint(Point point) {
-		getPoints().remove(point);
-		point.setObject(null);
-
-		return point;
+	public void setNumber(BigInteger number) {
+		this.number = number;
 	}
 
-	@Override
-	public String toString() {
-		return "Object [id=" + id + ", points=" + points + "]";
+	public String getOperator() {
+		return this.operator;
 	}
+
+	public void setOperator(String operator) {
+		this.operator = operator;
+	}
+
 }
