@@ -79,4 +79,9 @@ public class Anglepair implements Serializable {
 	public void setPoint(Point point1) {
 		this.point = point1;
 	}
+
+	@Override
+	public String toString() {
+		return "Anglepair [id=" + id + ", angles=" + angles + ", point=Point point@"+this.point.hashCode()+"]";
+	}
 }
