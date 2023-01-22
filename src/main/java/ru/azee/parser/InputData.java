@@ -105,7 +105,7 @@ public class InputData {
 		return anglepair;
 	}
 /**
- * Создаем угол-пару и добавляем туда @param angle. Так же добавляем его в список углов-пар @param anglePairs
+ * Создаем угол-пару и добавляем туда @param angle. Так же, добавляем его в список углов-пар @param anglePairs
  * @param angle
  * @param anglePairs
  */
@@ -115,6 +115,11 @@ public class InputData {
 		return anglePair;
 	}
 
+	/**
+	 * Создаем angle (угол) и добавляем в него значения полей vAngle и hAngle. Возвращаем angle.
+	 * @param matcherAngle
+	 * @return
+	 */
 	private Angle createAngle(Matcher matcherAngle) {
 		Angle angle = new Angle();
 		angle.setVangle(Double.valueOf(matcherAngle.group(3)));
@@ -122,6 +127,11 @@ public class InputData {
 		return angle;
 	}
 
+	/**
+	 * Созадпем точку point. 
+	 * @param matcherPoint
+	 * @return
+	 */
 	private Point createPoint(Matcher matcherPoint) {
 		Point point = new Point();
 		point.setCode(matcherPoint.group(2));
