@@ -60,18 +60,19 @@ public class InputData {
 								Angle angle = createAngle(matcherAngle);
 								Point point = points.get(points.size()-1);
 								List<Anglepair> anglePairs = point.getAnglepairs();
-								Anglepair anglepair = anglePairs.get(anglePairs.size()-1);
-								if (anglepair.getAngles().size() == 1) {
-									anglepair.addAngle(angle);
+								Anglepair lastAnglepair = anglePairs.get(anglePairs.size()-1);
+								if (lastAnglepair.getAngles().size() == 1) {
+									lastAnglepair.addAngle(angle);
 								} else {
-									createAnglepair(angle);
+									Anglepair newAnglepair = createAnglepair(angle);
+									point.addAnglepair(newAnglepair);
 								}
 							} else {
 								if (!matcherPoint.find()) {
 									throw new Exception("Ожидаем Point \n строка:" + line);
 								} else {
-									Anglepair anglepair = getLastAnglePair();
-									if (anglepair.getAngles().size() == 2) {
+									Anglepair lastAnglepair = getLastAnglePair();
+									if (lastAnglepair.getAngles().size() == 2) {
 										Point pnt = createPoint(matcherPoint);
 										points.add(pnt);
 									} else {

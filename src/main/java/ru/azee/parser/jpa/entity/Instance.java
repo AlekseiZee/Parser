@@ -97,4 +97,9 @@ public class Instance implements Serializable {
 		return point;
 	}
 
+	@Override
+	public String toString() {
+		return "Instance [id=" + id + ", author=" + author + ", creationDate=" + creationDate + ", label=" + label
+				+ ", points=" + points + "]";
+	}
 }
