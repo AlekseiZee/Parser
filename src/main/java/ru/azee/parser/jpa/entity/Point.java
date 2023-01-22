@@ -119,4 +119,9 @@ public class Point implements Serializable {
 		this.instance = instance;
 	}
 
+	@Override
+	public String toString() {
+		return "Point [id=" + id + ", code=" + code + ", distance=" + distance + ", hangle=" + hangle + ", vangle="
+				+ vangle + ", anglepairs=" + anglepairs + ", instance=Instance instance]";
+	}
 }

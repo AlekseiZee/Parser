@@ -69,4 +69,8 @@ public class Angle implements Serializable {
 		this.anglepair = anglepair;
 	}
 
+	@Override
+	public String toString() {
+		return "Angle [id=" + id + ", hangle=" + hangle + ", vangle=" + vangle + ", anglepair=Anglepair anglepair@"+this.anglepair.hashCode()+"]";
+	}
 }
