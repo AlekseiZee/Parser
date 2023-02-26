@@ -12,7 +12,7 @@ import ru.azee.parser.jpa.tools.PersistenceManager;
 
 public class Parser 
 {
-	static final String PATH = "C:\\Users\\A0707220\\Alexey\\JOB3.txt";
+	static final String PATH = "d:\\JOB3.txt";
 	
 public static void main(String[] args) throws Exception{
 	

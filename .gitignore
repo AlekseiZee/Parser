@@ -1,2 +1,14 @@
 /target/
 /.classpath
+.gradle
+.idea/
+!.idea/icon*.png
+*.iml
+build/
+src/main/gen
+src/main/resources/templates.list
+src/main/resources/gitignore/*
+src/main/resources/toptal/*
+bin/
+.project/
+.settings/
